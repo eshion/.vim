@@ -40,6 +40,7 @@ Bundle 'hlissner/vim-multiedit'
 " IDE features
 "--------------
 Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 "Bundle 'humiaozuzu/TabBar'
 Bundle 'majutsushi/tagbar'
 "Bundle 'mileszs/ack.vim'
