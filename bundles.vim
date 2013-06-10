@@ -11,7 +11,7 @@ Bundle 'gmarik/vundle'
 "------------------
 " Code Completions
 "------------------
-Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache.vim'
 Bundle 'Shougo/neosnippet.vim'
 "Bundle 'mattn/zencoding-vim'
 "Bundle 'Raimondi/delimitMate'
