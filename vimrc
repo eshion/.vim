@@ -178,7 +178,7 @@ let g:ctrlp_cmd = 'CtrlPBuffer'
 
 " Keybindings for plugin toggle
 nmap <F5> :TagbarToggle<cr>
-nmap <F6> :NERDTreeToggle<cr>
+nmap <F6> :NERDTreeTabsToggle<cr>
 "nmap <F3> :GundoToggle<cr>
 "nmap <F4> :IndentGuidesToggle<cr>
 nmap  <D-/> :
