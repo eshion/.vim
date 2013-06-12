@@ -130,6 +130,12 @@ let NERDTreeShowBookmarks=1
 let NERDTreeWinPos = "right"
 let g:NERDTreeDirArrows=0
 
+"indentLine
+let g:indentLine_color_term = 234
+let g:indentLine_char = '¦'
+
+" display indentation guides
+"set list listchars=tab:¦-,trail:·,extends:»,precedes:«,nbsp:×
 
 " powerline
 let g:Powerline_symbols = 'fancy'
