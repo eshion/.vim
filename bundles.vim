@@ -32,6 +32,7 @@ Bundle 'tpope/vim-surround'
 "Bundle 'godlygeek/tabular'
 "Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'hlissner/vim-multiedit'
+Bundle 'Yggdroot/indentLine'
 
 "--------------
 " IDE features
