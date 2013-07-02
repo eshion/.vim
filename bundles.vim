@@ -16,6 +16,8 @@ Bundle 'gmarik/vundle'
 "Bundle 'mattn/zencoding-vim'
 "Bundle 'Raimondi/delimitMate'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
+Bundle 'ervandew/supertab'
 
 "-----------------
 " Fast navigation
