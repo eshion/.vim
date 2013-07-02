@@ -11,11 +11,11 @@ Bundle 'gmarik/vundle'
 "------------------
 " Code Completions
 "------------------
-Bundle 'Shougo/neocomplcache.vim'
-Bundle 'Shougo/neosnippet.vim'
+"Bundle 'Shougo/neocomplcache.vim'
+"Bundle 'Shougo/neosnippet.vim'
 "Bundle 'mattn/zencoding-vim'
 "Bundle 'Raimondi/delimitMate'
-
+Bundle 'Valloric/YouCompleteMe'
 
 "-----------------
 " Fast navigation
@@ -31,8 +31,8 @@ Bundle 'tpope/vim-surround'
 "Bundle 'sjl/gundo.vim'
 "Bundle 'godlygeek/tabular'
 "Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'hlissner/vim-multiedit'
 Bundle 'Yggdroot/indentLine'
+Bundle 'terryma/vim-multiple-cursors'
 
 "--------------
 " IDE features
@@ -90,8 +90,6 @@ Bundle 'kien/rainbow_parentheses.vim'
 
 "sftp
 Bundle 'eshion/vim-sftp-sync'
-"multiple cursors
-"Bundle 'terryma/vim-multiple-cursors'
 
 "--------------
 " Color Schemes
