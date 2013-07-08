@@ -128,7 +128,6 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
 " let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 let NERDTreeWinPos = "right"
-let g:NERDTreeDirArrows=0
 
 "indentLine
 let g:indentLine_color_term = 234
@@ -138,7 +137,7 @@ let g:indentLine_char = '¦'
 "set list listchars=tab:¦-,trail:·,extends:»,precedes:«,nbsp:×
 
 " powerline
-let g:Powerline_symbols = 'fancy'
+" let g:Powerline_symbols = 'fancy'
 
 "Make YouCompleteMe Compatible With UltiSnips
 let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
