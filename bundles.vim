@@ -15,22 +15,22 @@ Bundle 'gmarik/vundle'
 "Bundle 'Shougo/neosnippet.vim'
 "Bundle 'mattn/zencoding-vim'
 "Bundle 'Raimondi/delimitMate'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'SirVer/ultisnips'
-Bundle 'ervandew/supertab'
+"Bundle 'Valloric/YouCompleteMe'
+"Bundle 'SirVer/ultisnips'
+"Bundle 'ervandew/supertab'
 
 "-----------------
 " Fast navigation
 "-----------------
-Bundle 'tsaleh/vim-matchit'
+"Bundle 'tsaleh/vim-matchit'
 Bundle 'Lokaltog/vim-easymotion'
 
 "--------------
 " Fast editing
 "--------------
 Bundle 'tpope/vim-surround'
-"Bundle 'scrooloose/nerdcommenter'
-"Bundle 'sjl/gundo.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'sjl/gundo.vim'
 "Bundle 'godlygeek/tabular'
 "Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Yggdroot/indentLine'
@@ -39,13 +39,13 @@ Bundle 'terryma/vim-multiple-cursors'
 "--------------
 " IDE features
 "--------------
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
+"Bundle 'scrooloose/nerdtree'
+"Bundle 'jistr/vim-nerdtree-tabs'
 "Bundle 'humiaozuzu/TabBar'
 Bundle 'majutsushi/tagbar'
 "Bundle 'mileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'fisadev/vim-ctrlp-cmdpalette'
+"Bundle 'fisadev/vim-ctrlp-cmdpalette'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
@@ -60,7 +60,7 @@ Bundle 'nvie/vim-togglemouse'
 " Syntax/Indent for language enhancement
 "----------------------------------------
 "------- web backend ---------
-Bundle '2072/PHP-Indenting-for-VIm'
+"Bundle '2072/PHP-Indenting-for-VIm'
 "Bundle 'tpope/vim-rails'
 "Bundle 'lepture/vim-jinja'
 "Bundle 'digitaltoad/vim-jade'
@@ -86,7 +86,7 @@ Bundle 'nono/jquery.vim'
 "Bundle 'jnwhiteh/vim-golang'
 
 "------- FPs ------
-Bundle 'kien/rainbow_parentheses.vim'
+"Bundle 'kien/rainbow_parentheses.vim'
 " Bundle 'wlangstroth/vim-racket'
 " Bundle 'vim-scripts/VimClojure'
 " Bundle 'rosstimson/scala-vim-support'
