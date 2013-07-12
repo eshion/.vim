@@ -21,8 +21,10 @@ syntax on
 " Vim UI
 "--------
 " color scheme
-"set background=dark
+"let g:molokai_original = 1
+let g:rehash256 = 1
 color molokai
+"set background=dark
 
 " highlight current line
 au WinLeave * set nocursorline nocursorcolumn
@@ -38,7 +40,7 @@ set smartcase
 " editor settings
 set history=1000
 set nocompatible
-set nofoldenable                                                  " disable folding"
+"set nofoldenable                                                  " disable folding"
 set confirm                                                       " prompt when existing from an unsaved file
 set backspace=indent,eol,start                                    " More powerful backspacing
 set t_Co=256                                                      " Explicitly tell vim that the terminal has 256 colors "
@@ -53,6 +55,8 @@ set title                                                         " show file in
 set laststatus=2                                                  " use 2 lines for the status bar
 set matchtime=2                                                   " show matching bracket for 0.2 seconds
 set matchpairs+=<:>                                               " specially for html
+set splitright                                                    " Split vertical windows right to the current windows
+set splitbelow                                                    " Split horizontal windows below to the current windows
 " set relativenumber
 
 " Default Indentation
@@ -64,6 +68,7 @@ set shiftwidth=4    " indent width
 " set textwidth=79
 " set smarttab
 set expandtab       " expand tab to space
+set autochdir       "auto change dir
 
 "persistent undo
 set undofile
@@ -120,18 +125,12 @@ let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 
-" Nerd Tree
-let NERDChristmasTree=0
-let NERDTreeWinSize=30
-let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
-" let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
-let NERDTreeShowBookmarks=1
-let NERDTreeWinPos = "right"
-
 "indentLine
-let g:indentLine_color_term = 234
+let g:indentLine_color_term = 235
 let g:indentLine_char = '¦'
+
+"Syntastic
+let g:syntastic_check_on_open=1
 
 " display indentation guides
 "set list listchars=tab:¦-,trail:·,extends:»,precedes:«,nbsp:×
@@ -140,9 +139,9 @@ let g:indentLine_char = '¦'
 " let g:Powerline_symbols = 'fancy'
 
 "Make YouCompleteMe Compatible With UltiSnips
-let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-Tab>'
+"let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-Tab>'
 set completeopt-=preview
 
 " Enable omni completion.
@@ -158,9 +157,22 @@ set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_S
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:ctrlp_cmd = 'CtrlPBuffer'
 
+let g:ctrlp_working_path_mode = 'ra'    " search for nearest ancestor like .git, .hg, and the directory of the current file
+let g:ctrlp_match_window_bottom = 0		" show the match window at the top of the screen
+let g:ctrlp_max_height = 10				" maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et'		" jump to a file if it's open already
+let g:ctrlp_use_caching = 1				" enable caching
+let g:ctrlp_clear_cache_on_exit=0  		" speed up by not removing clearing cache evertime
+let g:ctrlp_mruf_max = 250 				" number of recently opened files
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|build)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+  \ }
+
 " Keybindings for plugin toggle
 nmap <F5> :TagbarToggle<cr>
-nmap <F6> :NERDTreeTabsToggle<cr>
+nmap <F6> :Texplore<cr>
 "nmap <F3> :GundoToggle<cr>
 "nmap <F4> :IndentGuidesToggle<cr>
 nmap  <D-/> :
