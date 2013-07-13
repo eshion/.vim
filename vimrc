@@ -177,6 +177,9 @@ cmap w!! w !sudo tee >/dev/null %
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+" Quickly expand current fold
+cnoremap %% <C-R>=expand('%:p:h')<cr>
+
 "在插入模式中使用Ctrl+v粘贴全局剪贴板内容
 inoremap <C-v> <esc>"+pa
 
