@@ -93,27 +93,6 @@ let g:html_indent_style1 = "inc"
 "-----------------
 " Plugin settings
 "-----------------
-" Rainbow parentheses for Lisp and variants
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 16
-autocmd Syntax lisp,scheme,clojure,racket RainbowParenthesesToggle
 
 " easy-motion
 let g:EasyMotion_leader_key = '<Leader>'
@@ -164,15 +143,10 @@ let g:ctrlp_switch_buffer = 'et'		" jump to a file if it's open already
 let g:ctrlp_use_caching = 1				" enable caching
 let g:ctrlp_clear_cache_on_exit=0  		" speed up by not removing clearing cache evertime
 let g:ctrlp_mruf_max = 250 				" number of recently opened files
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|build)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-  \ }
 
 " Keybindings for plugin toggle
 nmap <F5> :TagbarToggle<cr>
-nmap <F6> :Texplore<cr>
+nmap <F6> :Explore<cr>
 "nmap <F3> :GundoToggle<cr>
 "nmap <F4> :IndentGuidesToggle<cr>
 nmap  <D-/> :
