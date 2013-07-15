@@ -11,13 +11,10 @@ Bundle 'gmarik/vundle'
 "------------------
 " Code Completions
 "------------------
-"Bundle 'Shougo/neocomplcache.vim'
-"Bundle 'Shougo/neosnippet.vim'
 "Bundle 'mattn/zencoding-vim'
 "Bundle 'Raimondi/delimitMate'
 "Bundle 'Valloric/YouCompleteMe'
 "Bundle 'SirVer/ultisnips'
-"Bundle 'ervandew/supertab'
 
 "-----------------
 " Fast navigation
@@ -28,10 +25,8 @@ Bundle 'Lokaltog/vim-easymotion'
 "--------------
 " Fast editing
 "--------------
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/nerdcommenter'
 Bundle 'sjl/gundo.vim'
-"Bundle 'godlygeek/tabular'
+Bundle 'godlygeek/tabular'
 "Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Yggdroot/indentLine'
 Bundle 'terryma/vim-multiple-cursors'
@@ -39,12 +34,10 @@ Bundle 'terryma/vim-multiple-cursors'
 "--------------
 " IDE features
 "--------------
-"Bundle 'scrooloose/nerdtree'
-"Bundle 'jistr/vim-nerdtree-tabs'
 "Bundle 'humiaozuzu/TabBar'
 Bundle 'majutsushi/tagbar'
 "Bundle 'mileszs/ack.vim'
-Bundle 'kien/ctrlp.vim'
+"Bundle 'kien/ctrlp.vim'
 "Bundle 'fisadev/vim-ctrlp-cmdpalette'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
@@ -60,36 +53,12 @@ Bundle 'nvie/vim-togglemouse'
 " Syntax/Indent for language enhancement
 "----------------------------------------
 "------- web backend ---------
-"Bundle '2072/PHP-Indenting-for-VIm'
-"Bundle 'tpope/vim-rails'
-"Bundle 'lepture/vim-jinja'
-"Bundle 'digitaltoad/vim-jade'
+
 
 "------- web frontend ----------
 Bundle 'othree/html5.vim'
-" Bundle 'tpope/vim-haml'
 Bundle 'pangloss/vim-javascript'
-"Bundle 'kchmck/vim-coffee-script'
 Bundle 'nono/jquery.vim'
-" Bundle 'groenewege/vim-less'
-" Bundle 'wavded/vim-stylus'
-" Bundle 'nono/vim-handlebars'
-
-"------- markup language -------
-"Bundle 'tpope/vim-markdown'
-" Bundle 'timcharper/textile.vim'
-
-"------- Ruby --------
-" Bundle 'tpope/vim-endwise'
-
-"------- Go ----------
-"Bundle 'jnwhiteh/vim-golang'
-
-"------- FPs ------
-"Bundle 'kien/rainbow_parentheses.vim'
-" Bundle 'wlangstroth/vim-racket'
-" Bundle 'vim-scripts/VimClojure'
-" Bundle 'rosstimson/scala-vim-support'
 
 "sftp
 Bundle 'eshion/vim-sftp-sync'
