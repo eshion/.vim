@@ -114,13 +114,16 @@ let g:syntastic_check_on_open=1
 " display indentation guides
 "set list listchars=tab:¦-,trail:·,extends:»,precedes:«,nbsp:×
 
-" powerline
-" let g:Powerline_symbols = 'fancy'
+let g:airline_theme='badwolf'
+"let g:airline_powerline_fonts = 0
+let g:airline_left_sep='♂'
+let g:airline_right_sep='♀'
+let g:bufferline_echo = 0
 
 "Make YouCompleteMe Compatible With UltiSnips
-"let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
-"let g:SuperTabDefaultCompletionType = '<C-Tab>'
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 set completeopt-=preview
 
 " Enable omni completion.
@@ -146,12 +149,11 @@ let g:ctrlp_mruf_max = 250 				" number of recently opened files
 
 " Keybindings for plugin toggle
 nmap <F5> :TagbarToggle<cr>
-nmap <F6> :Explore<cr>
-"nmap <F3> :GundoToggle<cr>
-"nmap <F4> :IndentGuidesToggle<cr>
+nmap <F3> :GundoToggle<cr>
 nmap  <D-/> :
 "nnoremap <leader>a :Ack
 nnoremap <leader>v V`]
+nnoremap <leader>l :ls<cr>:b 
 
 "------------------
 " Useful Functions
