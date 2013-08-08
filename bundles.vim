@@ -31,12 +31,13 @@ Bundle 'terryma/vim-multiple-cursors'
 "--------------
 " IDE features
 "--------------
-Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-bufferline'
 Bundle 'bling/vim-airline'
-
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/unite-outline'
+Bundle 'vim-scripts/bufkill.vim'
 "-------------
 " Other Utils
 "-------------
