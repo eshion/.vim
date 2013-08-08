@@ -69,6 +69,7 @@ set shiftwidth=4    " indent width
 " set smarttab
 set expandtab       " expand tab to space
 set autochdir       "auto change dir
+set hidden          "hide buffer when switching buffer
 
 "persistent undo
 set undofile
@@ -97,13 +98,6 @@ let g:html_indent_style1 = "inc"
 " easy-motion
 let g:EasyMotion_leader_key = '<Leader>'
 
-" Tagbar
-let g:tagbar_left=1
-let g:tagbar_width=30
-let g:tagbar_autofocus = 1
-let g:tagbar_sort = 0
-let g:tagbar_compact = 1
-
 "indentLine
 let g:indentLine_color_term = 235
 let g:indentLine_char = '¦'
@@ -111,14 +105,13 @@ let g:indentLine_char = '¦'
 "Syntastic
 let g:syntastic_check_on_open=1
 
-" display indentation guides
-"set list listchars=tab:¦-,trail:·,extends:»,precedes:«,nbsp:×
-
+"airline
 let g:airline_theme='badwolf'
 "let g:airline_powerline_fonts = 0
 let g:airline_left_sep='♂'
 let g:airline_right_sep='♀'
 let g:bufferline_echo = 0
+let g:airline_section_c = '%{expand("%:p")} ★%n'
 
 "Make YouCompleteMe Compatible With UltiSnips
 let g:UltiSnipsExpandTrigger="<c-k>"
@@ -134,26 +127,31 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
 
-" ctrlp
-set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store  " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_cmd = 'CtrlPBuffer'
+"Unite plugin
+let g:unite_data_directory='~/.cache/unite'
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
+let g:unite_source_rec_max_cache_files=5000
+let g:unite_prompt='» '
 
-let g:ctrlp_working_path_mode = 'ra'    " search for nearest ancestor like .git, .hg, and the directory of the current file
-let g:ctrlp_match_window_bottom = 0		" show the match window at the top of the screen
-let g:ctrlp_max_height = 10				" maxiumum height of match window
-let g:ctrlp_switch_buffer = 'et'		" jump to a file if it's open already
-let g:ctrlp_use_caching = 1				" enable caching
-let g:ctrlp_clear_cache_on_exit=0  		" speed up by not removing clearing cache evertime
-let g:ctrlp_mruf_max = 250 				" number of recently opened files
+nmap <space> [unite]
+nnoremap [unite] <nop>
+
+nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark file<cr><c-u>
+nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
+nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
+nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
+nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
+nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
+nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
+nnoremap <silent> [unite]o :<C-u>Unite outline<cr>
 
 " Keybindings for plugin toggle
-nmap <F5> :TagbarToggle<cr>
 nmap <F3> :GundoToggle<cr>
-nmap  <D-/> :
 "nnoremap <leader>a :Ack
 nnoremap <leader>v V`]
-nnoremap <leader>l :ls<cr>:b 
+nnoremap <leader><space> :ls<cr>:b 
 
 "------------------
 " Useful Functions
@@ -166,11 +164,11 @@ nnoremap <c-l> <c-w>l
 
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
-      \ if ! exists("g:leave_my_cursor_position_alone") |
-      \     if line("'\"") > 0 && line ("'\"") <= line("$") |
-      \         exe "normal g'\"" |
-      \     endif |
-      \ endif
+\ if ! exists("g:leave_my_cursor_position_alone") |
+\     if line("'\"") > 0 && line ("'\"") <= line("$") |
+\         exe "normal g'\"" |
+\     endif |
+\ endif
 
 " w!! to sudo & write a file
 cmap w!! w !sudo tee >/dev/null %
@@ -190,3 +188,7 @@ vnoremap <C-c> "+y
 
 "在Visual模式中使用Ctrl+x剪切内容到全局剪贴板
 vnoremap <C-x> "+x
+
+"buffer switch
+noremap <left> :bp<CR>
+noremap <right> :bn<CR>
