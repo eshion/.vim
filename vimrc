@@ -44,9 +44,9 @@ set nocompatible
 "set nofoldenable                                                  " disable folding
 set confirm                                                       " prompt when existing from an unsaved file
 set backspace=indent,eol,start                                    " More powerful backspacing
-set t_Co=256                                                      " Explicitly tell vim that the terminal has 256 colors "
+set t_Co=256                                                      " Explicitly tell vim that the terminal has 256 colors
 set mouse=a                                                       " use mouse in all modes
-set report=0                                                      " always report number of lines changed                "
+set report=0                                                      " always report number of lines changed
 set nowrap                                                        " dont wrap lines
 set scrolloff=5                                                   " 5 lines above/below cursor when scrolling
 set number                                                        " show line numbers
@@ -111,6 +111,23 @@ let g:airline_theme='badwolf'
 "let g:airline_left_sep='♂'
 "let g:airline_right_sep='♀'
 "let g:airline_section_c = '%{expand("%:p")} ★%n'
+
+"Make YouCompleteMe Compatible With UltiSnips
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+set completeopt-=preview
+
+"Syntastic
+let g:syntastic_check_on_open=1
+
+"airline
+let g:airline_theme='badwolf'
+"let g:airline_powerline_fonts = 0
+let g:airline_left_sep='♂'
+let g:airline_right_sep='♀'
+let g:bufferline_echo = 0
+let g:airline_section_c = '%{expand("%:p")} ★%n'
 
 "Make YouCompleteMe Compatible With UltiSnips
 let g:UltiSnipsExpandTrigger="<c-k>"
@@ -226,7 +243,7 @@ nnoremap <silent> [unite]o :<C-u>Unite outline<cr>
 " Keybindings for plugin toggle
 nmap <F3> :GundoToggle<cr>
 nmap  <D-/> :
-nnoremap <leader>a :Ack
+"nnoremap <leader>a :Ack
 nnoremap <leader>v V`]
 nnoremap <leader><space> :ls<cr>:b 
 
@@ -253,6 +270,9 @@ cmap w!! w !sudo tee >/dev/null %
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" Quickly expand current fold
+cnoremap %% <C-R>=expand('%:p:h')<cr>
 
 "在插入模式中使用Ctrl+v粘贴全局剪贴板内容
 inoremap <C-v> <esc>"+pa

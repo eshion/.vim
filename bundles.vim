@@ -34,6 +34,7 @@ Bundle 'vim-scripts/DrawIt'
 "--------------
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/syntastic'
+Bundle 'bling/vim-bufferline'
 Bundle 'bling/vim-airline'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/unite-outline'
