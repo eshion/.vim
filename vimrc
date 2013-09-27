@@ -124,10 +124,10 @@ let g:syntastic_check_on_open=1
 "airline
 let g:airline_theme='badwolf'
 "let g:airline_powerline_fonts = 0
-let g:airline_left_sep='♂'
-let g:airline_right_sep='♀'
-let g:bufferline_echo = 0
-let g:airline_section_c = '%{expand("%:p")} ★%n'
+"let g:airline_left_sep='♂'
+"let g:airline_right_sep='♀'
+"let g:bufferline_echo = 0
+"let g:airline_section_c = '%{expand("%:p")} ★%n'
 
 "Make YouCompleteMe Compatible With UltiSnips
 let g:UltiSnipsExpandTrigger="<c-k>"
