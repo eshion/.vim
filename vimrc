@@ -21,24 +21,27 @@ syntax on
 " Vim UI
 "--------
 " color scheme
-"set background=dark
+"let g:molokai_original = 1
+let g:rehash256 = 1
 color molokai
+"set background=dark
 
 " highlight current line
 au WinLeave * set nocursorline nocursorcolumn
-au WinEnter * set cursorline cursorcolumn
-set cursorline cursorcolumn
+au WinEnter * set cursorline nocursorcolumn
+set cursorline nocursorcolumn
 
 " search
-set incsearch
+set incsearch    " Shows the match while typing
 "set highlight   " conflict with highlight current line
+set hlsearch                    " Highlight found searches
 set ignorecase
 set smartcase
 
 " editor settings
 set history=1000
 set nocompatible
-set nofoldenable                                                  " disable folding"
+"set nofoldenable                                                  " disable folding
 set confirm                                                       " prompt when existing from an unsaved file
 set backspace=indent,eol,start                                    " More powerful backspacing
 set t_Co=256                                                      " Explicitly tell vim that the terminal has 256 colors "
@@ -53,6 +56,8 @@ set title                                                         " show file in
 set laststatus=2                                                  " use 2 lines for the status bar
 set matchtime=2                                                   " show matching bracket for 0.2 seconds
 set matchpairs+=<:>                                               " specially for html
+set splitright                                                    " Split vertical windows right to the current windows
+set splitbelow                                                    " Split horizontal windows below to the current windows
 " set relativenumber
 
 " Default Indentation
@@ -64,6 +69,8 @@ set shiftwidth=4    " indent width
 " set textwidth=79
 " set smarttab
 set expandtab       " expand tab to space
+set autochdir "auto change dir
+set hidden
 
 "persistent undo
 set undofile
@@ -88,79 +95,28 @@ let g:html_indent_style1 = "inc"
 "-----------------
 " Plugin settings
 "-----------------
-" Rainbow parentheses for Lisp and variants
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 16
-autocmd Syntax lisp,scheme,clojure,racket RainbowParenthesesToggle
-
 " easy-motion
 let g:EasyMotion_leader_key = '<Leader>'
 
-" Tagbar
-let g:tagbar_left=1
-let g:tagbar_width=30
-let g:tagbar_autofocus = 1
-let g:tagbar_sort = 0
-let g:tagbar_compact = 1
+"indentLine
+let g:indentLine_color_term = 235
+let g:indentLine_char = '¦'
 
-" Nerd Tree
-let NERDChristmasTree=0
-let NERDTreeWinSize=30
-let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
-" let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
-let NERDTreeShowBookmarks=1
-let NERDTreeWinPos = "right"
-let g:NERDTreeDirArrows=0
+"Syntastic
+let g:syntastic_check_on_open=1
 
+"airline
+let g:airline_theme='badwolf'
+"let g:airline_powerline_fonts = 1
+"let g:airline_left_sep='♂'
+"let g:airline_right_sep='♀'
+"let g:airline_section_c = '%{expand("%:p")} ★%n'
 
-" powerline
-let g:Powerline_symbols = 'fancy'
-
-" NeoComplCache
-let g:neocomplcache_enable_at_startup=1
-let g:neoComplcache_disableautocomplete=1
-"let g:neocomplcache_enable_underbar_completion = 1
-"let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case=1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+"Make YouCompleteMe Compatible With UltiSnips
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 set completeopt-=preview
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -170,20 +126,109 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
 
+"conf for scp-upload{
+let g:vim_sftp_configs = {
+\   'card.cm.com' : {
+\       'upload_on_save'   : 1,
+\       'download_on_open' : 0,
+\       'confirm_downloads': 1,
+\       'confirm_uploads'  : 0,
+\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/card.cm.com/',
+\       'remote_base_path' : '/data/release/club/card.cm.com/',
+\       'user' : 'user_00',
+\       'pass' : '"isd\!\@\#user"',
+\       'host' : '10.6.222.31',
+\       'port' : '36000'
+\   },
+\   'mp.trade.qq.com' : {
+\       'upload_on_save'   : 1,
+\       'download_on_open' : 0,
+\       'confirm_downloads': 1,
+\       'confirm_uploads'  : 0,
+\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/mp.kabao.qq.com/',
+\       'remote_base_path' : '/data/release/club/mp.trade.qq.com/',
+\       'user' : 'user_00',
+\       'pass' : '"isd\!\@\#user"',
+\       'host' : '10.12.193.197',
+\       'port' : '36000'
+\   },
+\   'mp.qlife.qq.com' : {
+\       'upload_on_save'   : 1,
+\       'download_on_open' : 0,
+\       'confirm_downloads': 1,
+\       'confirm_uploads'  : 0,
+\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/mp.qlife.qq.com/',
+\       'remote_base_path' : '/data/release/club/mp.qlife.qq.com/',
+\       'user' : 'user_00',
+\       'pass' : '"isd\!\@\#user"',
+\       'host' : '10.12.193.197',
+\       'port' : '36000'
+\   },
+\   'eshion' : {
+\       'upload_on_save'   : 1,
+\       'download_on_open' : 0,
+\       'confirm_downloads': 1,
+\       'confirm_uploads'  : 0,
+\       'local_base_path'  : '/mnt/e/dev/10.6.222.31_eshion/',
+\       'remote_base_path' : '/home/user_00/eshion/',
+\       'user' : 'user_00',
+\       'pass' : '"isd\!\@\#user"',
+\       'host' : '10.12.193.197',
+\       'port' : '36000'
+\   },
+\   'fangchan_stat_build' : {
+\       'upload_on_save'   : 1,
+\       'download_on_open' : 0,
+\       'confirm_downloads': 1,
+\       'confirm_uploads'  : 0,
+\       'local_base_path'  : '/mnt/e/dev/weilife_proj/wei/shell/',
+\       'remote_base_path' : '/data/release/club/trade.qq.com/shell/',
+\       'user' : 'user_00',
+\       'pass' : '"isd\!\@\#user"',
+\       'host' : '10.12.193.197',
+\       'port' : '36000'
+\   },
+\   'qlife.qq.com' : {
+\       'upload_on_save'   : 1,
+\       'download_on_open' : 0,
+\       'confirm_downloads': 1,
+\       'confirm_uploads'  : 0,
+\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/qlife.qq.com/',
+\       'remote_base_path' : '/data/release/club/qlife.qq.com/',
+\       'user' : 'user_00',
+\       'pass' : '"isd\!\@\#user"',
+\       'host' : '10.12.193.197',
+\       'port' : '36000'
+\   }
+\}
+"}
 
-" ctrlp
-set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store  " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_cmd = 'CtrlPBuffer'
+"Unite plugin
+let g:unite_data_directory='~/.cache/unite'
+let g:unite_enable_start_insert=1
+let g:unite_source_history_yank_enable=1
+let g:unite_source_rec_max_cache_files=5000
+let g:unite_prompt='» '
+
+nmap <space> [unite]
+nnoremap [unite] <nop>
+
+nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark file<cr><c-u>
+nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
+nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
+nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
+nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
+nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
+nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
+nnoremap <silent> [unite]o :<C-u>Unite outline<cr>
 
 " Keybindings for plugin toggle
-nmap <F5> :TagbarToggle<cr>
-nmap <F6> :NERDTreeToggle<cr>
-"nmap <F3> :GundoToggle<cr>
-"nmap <F4> :IndentGuidesToggle<cr>
+nmap <F3> :GundoToggle<cr>
 nmap  <D-/> :
-"nnoremap <leader>a :Ack
+nnoremap <leader>a :Ack
 nnoremap <leader>v V`]
+nnoremap <leader><space> :ls<cr>:b 
 
 "------------------
 " Useful Functions
@@ -196,11 +241,11 @@ nnoremap <c-l> <c-w>l
 
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
-      \ if ! exists("g:leave_my_cursor_position_alone") |
-      \     if line("'\"") > 0 && line ("'\"") <= line("$") |
-      \         exe "normal g'\"" |
-      \     endif |
-      \ endif
+\ if ! exists("g:leave_my_cursor_position_alone") |
+\     if line("'\"") > 0 && line ("'\"") <= line("$") |
+\         exe "normal g'\"" |
+\     endif |
+\ endif
 
 " w!! to sudo & write a file
 cmap w!! w !sudo tee >/dev/null %
@@ -217,3 +262,10 @@ vnoremap <C-c> "+y
 
 "在Visual模式中使用Ctrl+x剪切内容到全局剪贴板
 vnoremap <C-x> "+x
+
+"buffer switch
+noremap <left> :bp<CR>
+noremap <right> :bn<CR>
+
+"Command-line mode with the enter key
+noremap <CR> :
