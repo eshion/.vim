@@ -113,7 +113,19 @@ let g:lightline = {
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
-
+      
+"startify
+let g:startify_custom_header = [
+            \ '             _     _                __      ___            ______ ____   ',
+            \ '            | |   (_)               \ \    / (_)           |____  |___ \ ',
+            \ '    ___  ___| |__  _  ___  _ __      \ \  / / _ _ __ ___       / /  __) |',
+            \ "   / _ \\/ __| '_ \\| |/ _ \\| '_ \\      \\ \\/ / | |''_ ` _ \\     / /  |__ <",
+            \ '  |  __/\__ \ | | | | (_) | | | |      \  /  | | | | | | |   / /   ___) |',
+            \ '   \___||___/_| |_|_|\___/|_| |_|       \/   |_|_| |_| |_|  /_(_) |____/ ',
+            \ '',
+            \ '',
+            \ ]
+            
 "Make YouCompleteMe Compatible With UltiSnips
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
