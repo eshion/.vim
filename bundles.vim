@@ -35,10 +35,13 @@ Bundle 'vim-scripts/DrawIt'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-bufferline'
-Bundle 'bling/vim-airline'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/unite-outline'
 Bundle 'vim-scripts/bufkill.vim'
+Bundle 'kmnk/vim-unite-svn'
+Bundle 'ujihisa/unite-colorscheme'
+Bundle 'ujihisa/unite-sync'
+Bundle 'itchyny/lightline.vim'
 "-------------
 " Other Utils
 "-------------
