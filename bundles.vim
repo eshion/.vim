@@ -40,8 +40,9 @@ Bundle 'Shougo/unite-outline'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'kmnk/vim-unite-svn'
 Bundle 'ujihisa/unite-colorscheme'
-Bundle 'ujihisa/unite-sync'
+Bundle 'eshion/unite-sync'
 Bundle 'itchyny/lightline.vim'
+Bundle 'mhinz/vim-startify'
 "-------------
 " Other Utils
 "-------------
