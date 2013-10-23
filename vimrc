@@ -105,12 +105,14 @@ let g:indentLine_char = '¦'
 "Syntastic
 let g:syntastic_check_on_open=1
 
-"airline
-let g:airline_theme='badwolf'
-"let g:airline_powerline_fonts = 1
-"let g:airline_left_sep='♂'
-"let g:airline_right_sep='♀'
-"let g:airline_section_c = '%{expand("%:p")} ★%n'
+"lightline
+let g:lightline = {
+      \ 'component': {
+      \   'readonly': '%{&readonly?"⭤":""}',
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
 
 "Make YouCompleteMe Compatible With UltiSnips
 let g:UltiSnipsExpandTrigger="<c-k>"
