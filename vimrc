@@ -120,23 +120,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 set completeopt-=preview
 
-"Syntastic
-let g:syntastic_check_on_open=1
-
-"airline
-let g:airline_theme='badwolf'
-"let g:airline_powerline_fonts = 0
-"let g:airline_left_sep='♂'
-"let g:airline_right_sep='♀'
-"let g:bufferline_echo = 0
-"let g:airline_section_c = '%{expand("%:p")} ★%n'
-
-"Make YouCompleteMe Compatible With UltiSnips
-let g:UltiSnipsExpandTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-k>"
-let g:UltiSnipsJumpBackwardTrigger="<c-j>"
-set completeopt-=preview
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -144,83 +127,6 @@ autocmd FileType html,markdown setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
-
-"conf for scp-upload{
-let g:vim_sftp_configs = {
-\   'card.cm.com' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/card.cm.com/',
-\       'remote_base_path' : '/data/release/club/card.cm.com/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.6.222.31',
-\       'port' : '36000'
-\   },
-\   'mp.trade.qq.com' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/mp.kabao.qq.com/',
-\       'remote_base_path' : '/data/release/club/mp.trade.qq.com/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.12.193.197',
-\       'port' : '36000'
-\   },
-\   'mp.qlife.qq.com' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/mp.qlife.qq.com/',
-\       'remote_base_path' : '/data/release/club/mp.qlife.qq.com/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.12.193.197',
-\       'port' : '36000'
-\   },
-\   'eshion' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/10.6.222.31_eshion/',
-\       'remote_base_path' : '/home/user_00/eshion/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.12.193.197',
-\       'port' : '36000'
-\   },
-\   'fangchan_stat_build' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/weilife_proj/wei/shell/',
-\       'remote_base_path' : '/data/release/club/trade.qq.com/shell/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.12.193.197',
-\       'port' : '36000'
-\   },
-\   'qlife.qq.com' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/qlife.qq.com/',
-\       'remote_base_path' : '/data/release/club/qlife.qq.com/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.12.193.197',
-\       'port' : '36000'
-\   }
-\}
-"}
 
 "Unite plugin
 let g:unite_data_directory='~/.cache/unite'
