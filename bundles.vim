@@ -42,6 +42,7 @@ Bundle 'kmnk/vim-unite-svn'
 Bundle 'ujihisa/unite-colorscheme'
 Bundle 'ujihisa/unite-sync'
 Bundle 'itchyny/lightline.vim'
+Bundle 'mhinz/vim-startify.git'
 "-------------
 " Other Utils
 "-------------
