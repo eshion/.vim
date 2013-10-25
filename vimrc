@@ -1,4 +1,21 @@
-source ~/.vim/bundles.vim
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
+" source ~/.vimrc.before if it exists.
+if filereadable(expand("~/.vimrc.before"))
+   source ~/.vimrc.before
+endif
+
+" =============== Vundle Initialization ===============
+" This loads all the plugins specified in ~/.vim/vundle.vim
+" Use Vundle plugin to manage all other plugins
+if filereadable(expand("~/.vim/bundles.vim"))
+  source ~/.vim/bundles.vim
+endif
+
+" ================ General Config ====================
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -40,8 +57,6 @@ set smartcase
 
 " editor settings
 set history=1000
-set nocompatible
-"set nofoldenable                                                  " disable folding
 set confirm                                                       " prompt when existing from an unsaved file
 set backspace=indent,eol,start                                    " More powerful backspacing
 set t_Co=256                                                      " Explicitly tell vim that the terminal has 256 colors
@@ -54,6 +69,7 @@ set showmatch                                                     " show matchin
 set showcmd                                                       " show typed command in status bar
 set title                                                         " show file in titlebar
 set laststatus=2                                                  " use 2 lines for the status bar
+set showmatch                                                     " show matching bracket (briefly jump)
 set matchtime=2                                                   " show matching bracket for 0.2 seconds
 set matchpairs+=<:>                                               " specially for html
 set splitright                                                    " Split vertical windows right to the current windows
@@ -70,12 +86,28 @@ set shiftwidth=4    " indent width
 " set smarttab
 set expandtab       " expand tab to space
 set autochdir "auto change dir
+
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
-"persistent undo
-set undofile
-set undodir=~/.cache/undo
+" ================ Turn Off Swap Files ==============
+set noswapfile
+set nobackup
+set nowb
+
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+silent !mkdir ~/.vim/backups > /dev/null 2>&1
+set undodir=~/.vim/backups
 set undolevels=1000 "max num of changes that can be undone
+
+" ================ Folds ============================
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
 
 autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
@@ -85,56 +117,6 @@ autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=
 autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
 autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
-" syntax support
-autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
-" js
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
-
-"-----------------
-" Plugin settings
-"-----------------
-" easy-motion
-let g:EasyMotion_leader_key = '<Leader>'
-
-"indentLine
-let g:indentLine_color_term = 235
-let g:indentLine_char = '¦'
-
-"Syntastic
-let g:syntastic_check_on_open=1
-
-"airline
-let g:airline_theme='badwolf'
-"let g:airline_powerline_fonts = 1
-"let g:airline_left_sep='♂'
-"let g:airline_right_sep='♀'
-"let g:airline_section_c = '%{expand("%:p")} ★%n'
-
-"Make YouCompleteMe Compatible With UltiSnips
-let g:UltiSnipsExpandTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-k>"
-let g:UltiSnipsJumpBackwardTrigger="<c-j>"
-set completeopt-=preview
-
-"Syntastic
-let g:syntastic_check_on_open=1
-
-"airline
-let g:airline_theme='badwolf'
-"let g:airline_powerline_fonts = 0
-"let g:airline_left_sep='♂'
-"let g:airline_right_sep='♀'
-"let g:bufferline_echo = 0
-"let g:airline_section_c = '%{expand("%:p")} ★%n'
-
-"Make YouCompleteMe Compatible With UltiSnips
-let g:UltiSnipsExpandTrigger="<c-k>"
-let g:UltiSnipsJumpForwardTrigger="<c-k>"
-let g:UltiSnipsJumpBackwardTrigger="<c-j>"
-set completeopt-=preview
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -142,103 +124,10 @@ autocmd FileType html,markdown setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
+autocmd FileType php setlocal dict+=~/.vim/ftplugin/php_funclist.txt
 
-"conf for scp-upload{
-let g:vim_sftp_configs = {
-\   'card.cm.com' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/card.cm.com/',
-\       'remote_base_path' : '/data/release/club/card.cm.com/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.6.222.31',
-\       'port' : '36000'
-\   },
-\   'mp.trade.qq.com' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/mp.kabao.qq.com/',
-\       'remote_base_path' : '/data/release/club/mp.trade.qq.com/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.12.193.197',
-\       'port' : '36000'
-\   },
-\   'mp.qlife.qq.com' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/mp.qlife.qq.com/',
-\       'remote_base_path' : '/data/release/club/mp.qlife.qq.com/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.12.193.197',
-\       'port' : '36000'
-\   },
-\   'eshion' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/10.6.222.31_eshion/',
-\       'remote_base_path' : '/home/user_00/eshion/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.12.193.197',
-\       'port' : '36000'
-\   },
-\   'fangchan_stat_build' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/weilife_proj/wei/shell/',
-\       'remote_base_path' : '/data/release/club/trade.qq.com/shell/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.12.193.197',
-\       'port' : '36000'
-\   },
-\   'qlife.qq.com' : {
-\       'upload_on_save'   : 1,
-\       'download_on_open' : 0,
-\       'confirm_downloads': 1,
-\       'confirm_uploads'  : 0,
-\       'local_base_path'  : '/mnt/e/dev/weilife_proj/card/web/qlife.qq.com/',
-\       'remote_base_path' : '/data/release/club/qlife.qq.com/',
-\       'user' : 'user_00',
-\       'pass' : '"isd\!\@\#user"',
-\       'host' : '10.12.193.197',
-\       'port' : '36000'
-\   }
-\}
-"}
+set completeopt-=preview
 
-"Unite plugin
-let g:unite_data_directory='~/.cache/unite'
-let g:unite_enable_start_insert=1
-let g:unite_source_history_yank_enable=1
-let g:unite_source_rec_max_cache_files=5000
-let g:unite_prompt='» '
-
-nmap <space> [unite]
-nnoremap [unite] <nop>
-
-nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark file<cr><c-u>
-nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
-nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
-nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
-nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
-nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
-nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
-nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
-nnoremap <silent> [unite]o :<C-u>Unite outline<cr>
 
 " Keybindings for plugin toggle
 nmap <F3> :GundoToggle<cr>
@@ -250,11 +139,6 @@ nnoremap <leader><space> :ls<cr>:b
 "------------------
 " Useful Functions
 "------------------
-" easier navigation between split windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
 
 " When editing a file, always jump to the last cursor position
 autocmd BufReadPost *
@@ -289,3 +173,6 @@ noremap <right> :bn<CR>
 
 "Command-line mode with the enter key
 noremap <CR> :
+
+" ================ Custom Settings ========================
+so ~/.vim/settings.vim

@@ -11,8 +11,14 @@ Bundle 'gmarik/vundle'
 "------------------
 " Code Completions
 "------------------
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'SirVer/ultisnips'
+"Bundle 'Valloric/YouCompleteMe'
+Bundle 'vim-scripts/L9'
+Bundle 'othree/vim-autocomplpop'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle "honza/vim-snippets"
+"Bundle 'SirVer/ultisnips'
 
 "-----------------
 " Fast navigation
@@ -38,7 +44,6 @@ Bundle 'bling/vim-bufferline'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/unite-outline'
 Bundle 'vim-scripts/bufkill.vim'
-Bundle 'kmnk/vim-unite-svn'
 Bundle 'ujihisa/unite-colorscheme'
 Bundle 'ujihisa/unite-sync'
 Bundle 'itchyny/lightline.vim'
