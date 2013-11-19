@@ -44,10 +44,11 @@ Bundle 'bling/vim-bufferline'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/unite-outline'
 Bundle 'vim-scripts/bufkill.vim'
-Bundle 'ujihisa/unite-colorscheme'
+"Bundle 'ujihisa/unite-colorscheme'
 Bundle 'ujihisa/unite-sync'
 Bundle 'itchyny/lightline.vim'
-Bundle 'mhinz/vim-startify.git'
+"Bundle 'mhinz/vim-startify.git'
+Bundle 'sjl/vitality.vim'
 "-------------
 " Other Utils
 "-------------
