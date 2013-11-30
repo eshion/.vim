@@ -22,5 +22,3 @@
         :BundleInstall
 
 Thst's it!
-
-For installation on Windows, please refer to this post: http://yoxyue.com/2012/10/17/gVIM-on-win7/ (Thanks to [yoxyue](https://github.com/yoxyue))
