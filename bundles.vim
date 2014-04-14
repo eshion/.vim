@@ -11,14 +11,12 @@ Bundle 'gmarik/vundle'
 "------------------
 " Code Completions
 "------------------
-"Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/L9'
 Bundle 'othree/vim-autocomplpop'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
 Bundle "honza/vim-snippets"
-"Bundle 'SirVer/ultisnips'
 
 "-----------------
 " Fast navigation
@@ -43,10 +41,11 @@ Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-bufferline'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/unite-outline'
+Bundle 'Shougo/neomru.vim'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'itchyny/lightline.vim'
-"Bundle 'mhinz/vim-startify.git'
 Bundle 'sjl/vitality.vim'
+Bundle 'hsitz/VimOrganizer'
 "-------------
 " Other Utils
 "-------------
@@ -65,7 +64,7 @@ Bundle 'nono/jquery.vim'
 "Bundle 'tpope/vim-markdown'
 
 "sftp
-Bundle 'eshion/vim-sftp-sync'
+Bundle 'eshion/vim-sync'
 
 "--------------
 " Color Schemes
